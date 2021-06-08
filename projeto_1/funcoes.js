@@ -9,14 +9,15 @@ function lerDiretorio(caminho) {
             resolve(arquivos)
         } catch(e) {
             reject(e)
-        }
-        
+        }        
     })
+}
 
-    
-
+function elementosTerminadosEm(array, padrao){
+    return array.filter(el => el.endsWith(padrao))    
 }
 
 module.exports = {
-    lerDiretorio
+    lerDiretorio,
+    elementosTerminadosEm
 }
