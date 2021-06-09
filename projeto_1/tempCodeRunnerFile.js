@@ -1,1 +1,1 @@
-removerElementosApenasNumeros
+    .then(fn.removerElementosSeVazio)

@@ -70,6 +70,16 @@ function removerElementosApenasNumeros(array) {
     })
 }
 
+function mesclarElementos(array) {
+    return array.join(' ')
+}
+
+function separarTextoPor(simbolo) {
+    return function(texto) {
+        return texto.split(simbolo)
+    }
+}
+
 module.exports = {
     lerDiretorio,
     lerArquivo,
@@ -78,5 +88,7 @@ module.exports = {
     removerElementosSeVazio,
     removerElementosSeIncluir,
     removerElementosApenasNumeros,
-    removerSimbolos
+    removerSimbolos,
+    mesclarElementos,
+    separarTextoPor
 }
