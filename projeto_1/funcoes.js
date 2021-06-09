@@ -21,18 +21,14 @@ function elementosTerminadosEm(padrao){
 }
 
 function removerSimbolos(simbolos) {
-    return function(array) {
+    return function (array) {
         return array.map(el => {
-            let textoSemSibolos = el
-            simbolos.forEach(simbolo => {
-                textoSemSibolos = textoSemSibolos.split(simbolo).join('')
-                
-            })
-            return textoSemSibolos
+            return simbolos.reduce((acc, simbolo) => {
+                return acc.split(simbolo).join('')
+            }, el)
         })
     }
-}
-    
+}    
 
 function lerArquivo(caminho) {
     return new Promise((resolve, reject) => {
