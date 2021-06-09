@@ -19,6 +19,19 @@ function elementosTerminadosEm(padrao){
         return array.filter(el => el.endsWith(padrao))
     }
 }
+
+function removerSimbolos(simbolos) {
+    return function(array) {
+        return array.map(el => {
+            let textoSemSibolos = el
+            simbolos.forEach(simbolo => {
+                textoSemSibolos = textoSemSibolos.split(simbolo).join('')
+                
+            })
+            return textoSemSibolos
+        })
+    }
+}
     
 
 function lerArquivo(caminho) {
@@ -64,5 +77,6 @@ module.exports = {
     elementosTerminadosEm,
     removerElementosSeVazio,
     removerElementosSeIncluir,
-    removerElementosApenasNumeros
+    removerElementosApenasNumeros,
+    removerSimbolos
 }
