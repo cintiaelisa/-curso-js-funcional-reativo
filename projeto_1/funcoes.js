@@ -37,10 +37,27 @@ function removerSeVazio(array) {
     return array.filter(el => el.trim())
 }
 
+function removerSeIncluir(array, padrao){
+    return array.filter(el => !el.includes(padrao))
+}
+
+//Quando o valor não é numérico o parseInt retorna NaN
+//Comparando estritamente o valor com ele mesmo, se for numérico retornará verdadeiro.
+//Já um NaN comparado com ele mesmo retornará false.
+//Invertendo a condição (!) retornará o esperado (somente palavras, não números)
+function removerApenasNúmeros(array) {
+    return array.filter(el => {
+        const num = parseInt(el.trim())
+        return num !== num
+    })
+}
+
 module.exports = {
     lerDiretorio,
     lerArquivo,
     lerArquivos,
     elementosTerminadosEm,
-    removerSeVazio
+    removerSeVazio,
+    removerSeIncluir,
+    removerApenasNúmeros
 }
