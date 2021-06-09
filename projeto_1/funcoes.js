@@ -14,9 +14,12 @@ function lerDiretorio(caminho) {
     })
 }
 
-function elementosTerminadosEm(array, padrao){
-    return array.filter(el => el.endsWith(padrao))    
+function elementosTerminadosEm(padrao){
+    return function(array) {
+        return array.filter(el => el.endsWith(padrao))
+    }
 }
+    
 
 function lerArquivo(caminho) {
     return new Promise((resolve, reject) => {
@@ -33,19 +36,21 @@ function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)))
 }
 
-function removerSeVazio(array) {
+function removerElementosSeVazio(array) {
     return array.filter(el => el.trim())
 }
 
-function removerSeIncluir(array, padrao){
-    return array.filter(el => !el.includes(padrao))
+function removerElementosSeIncluir(padrao){
+    return function(array) {
+        return array.filter(el => !el.includes(padrao))
+    }    
 }
 
 //Quando o valor não é numérico o parseInt retorna NaN
 //Comparando estritamente o valor com ele mesmo, se for numérico retornará verdadeiro.
 //Já um NaN comparado com ele mesmo retornará false.
 //Invertendo a condição (!) retornará o esperado (somente palavras, não números)
-function removerApenasNúmeros(array) {
+function removerElementosApenasNumeros(array) {
     return array.filter(el => {
         const num = parseInt(el.trim())
         return num !== num
@@ -57,7 +62,7 @@ module.exports = {
     lerArquivo,
     lerArquivos,
     elementosTerminadosEm,
-    removerSeVazio,
-    removerSeIncluir,
-    removerApenasNúmeros
+    removerElementosSeVazio,
+    removerElementosSeIncluir,
+    removerElementosApenasNumeros
 }
